@@ -23,12 +23,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import com.bae.animationtest.ui.theme.AnimationTestTheme
 
 @Composable
-fun AlphaAnimation(navController: NavHostController) {
+fun AlphaAnimation() {
     var faded by remember { mutableStateOf(false) }
     val alpha by animateFloatAsState(
         targetValue = if (faded) 0.3f else 1f,
@@ -61,6 +59,6 @@ fun AlphaAnimation(navController: NavHostController) {
 @Composable
 fun AlphaAnimationPreview() {
     AnimationTestTheme {
-        AlphaAnimation(rememberNavController())
+        AlphaAnimation()
     }
 }

@@ -23,12 +23,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import com.bae.animationtest.ui.theme.AnimationTestTheme
 
 @Composable
-fun RotationAnimation(navController: NavHostController) {
+fun RotationAnimation() {
     var rotated by remember { mutableStateOf(false) }
     val angle by animateFloatAsState(
         targetValue = if (rotated) 180f else 0f,
@@ -61,6 +59,6 @@ fun RotationAnimation(navController: NavHostController) {
 @Composable
 fun RotationAnimationPreview() {
     AnimationTestTheme {
-        RotationAnimation(rememberNavController())
+        RotationAnimation()
     }
 }

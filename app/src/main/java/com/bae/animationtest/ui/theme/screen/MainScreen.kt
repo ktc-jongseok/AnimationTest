@@ -19,6 +19,11 @@ import com.bae.animationtest.ui.theme.animation.RotationAnimation
 import com.bae.animationtest.ui.theme.animation.ScaleAnimation
 import com.bae.animationtest.ui.theme.animation.TranslationAnimation
 import com.bae.animationtest.ui.theme.component.MainTabBar
+import com.bae.animationtest.ui.theme.spec.KeyFramesAnimation
+import com.bae.animationtest.ui.theme.spec.RepeatableAnimation
+import com.bae.animationtest.ui.theme.spec.SnapAnimation
+import com.bae.animationtest.ui.theme.spec.SpringAnimation
+import com.bae.animationtest.ui.theme.spec.TweenAnimation
 
 @Composable
 fun MainScreen() {
@@ -36,6 +41,18 @@ fun MainScreen() {
         }
     ) { padding ->
         AppNavHost(navController = navController, contentPadding = padding)
+
+        if (tabPage == TabPage.Animation) {
+            navController.navigate("animation") {
+                popUpTo(navController.graph.startDestinationId)
+                launchSingleTop = true
+            }
+        } else {
+            navController.navigate("spec") {
+                popUpTo(navController.graph.startDestinationId)
+                launchSingleTop = true
+            }
+        }
     }
 }
 
@@ -43,14 +60,21 @@ fun MainScreen() {
 fun AppNavHost(navController: NavHostController, contentPadding: PaddingValues) {
     NavHost(navController = navController, startDestination = "animation") {
         composable("animation") { AnimationSamples(navController, contentPadding) }
-        composable("scale") { ScaleAnimation(navController) }
-        composable("translate") { TranslationAnimation(navController) }
-        composable("rotate") { RotationAnimation(navController) }
-        composable("alpha") { AlphaAnimation(navController) }
-        composable("color") { ColorAnimation(navController) }
+        composable("scale") { ScaleAnimation() }
+        composable("translate") { TranslationAnimation() }
+        composable("rotate") { RotationAnimation() }
+        composable("alpha") { AlphaAnimation() }
+        composable("color") { ColorAnimation() }
+
+        composable("spec") { SpecSamples(navController, contentPadding) }
+        composable("tween") { TweenAnimation() }
+        composable("spring") { SpringAnimation() }
+        composable("snap") { SnapAnimation() }
+        composable("keyframes") { KeyFramesAnimation() }
+        composable("repeatable") { RepeatableAnimation() }
     }
 }
 
 enum class TabPage {
-    Animation, Tab2
+    Animation, Spec
 }

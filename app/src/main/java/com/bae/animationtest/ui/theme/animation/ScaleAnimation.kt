@@ -23,12 +23,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import com.bae.animationtest.ui.theme.AnimationTestTheme
 
 @Composable
-fun ScaleAnimation(navController: NavHostController) {
+fun ScaleAnimation() {
     var scaledUp by remember { mutableStateOf(false) }
     val scale by animateFloatAsState(
         targetValue = if (scaledUp) 2f else 1f,
@@ -61,6 +59,6 @@ fun ScaleAnimation(navController: NavHostController) {
 @Composable
 fun ScaleAnimationPreview() {
     AnimationTestTheme {
-        ScaleAnimation(rememberNavController())
+        ScaleAnimation()
     }
 }

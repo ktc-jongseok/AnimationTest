@@ -61,7 +61,7 @@ fun MainTabBar(
             MainTab(
                 icon = Icons.Default.Face,
                 title = stringResource(R.string.tab2_name),
-                onClick = { onTabSelected(TabPage.Tab2) }
+                onClick = { onTabSelected(TabPage.Spec) }
             )
         }
     }
@@ -104,7 +104,9 @@ private fun MainTabPreview() {
         MainTab(
             icon = Icons.Default.Home,
             title = stringResource(R.string.tab1_name),
-            onClick = { }
+            onClick = {
+
+            }
         )
         MainTab(
             icon = Icons.Default.Face,

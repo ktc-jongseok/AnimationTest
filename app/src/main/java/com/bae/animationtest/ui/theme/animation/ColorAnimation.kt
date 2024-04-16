@@ -22,12 +22,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import com.bae.animationtest.ui.theme.AnimationTestTheme
 
 @Composable
-fun ColorAnimation(navController: NavHostController) {
+fun ColorAnimation() {
     var changedColor by remember { mutableStateOf(false) }
     val color by animateColorAsState(
         targetValue = if (changedColor) Color.Yellow else Color.Cyan,
@@ -59,6 +57,6 @@ fun ColorAnimation(navController: NavHostController) {
 @Composable
 fun ColorAnimationPreview() {
     AnimationTestTheme {
-        ColorAnimation(rememberNavController())
+        ColorAnimation()
     }
 }
