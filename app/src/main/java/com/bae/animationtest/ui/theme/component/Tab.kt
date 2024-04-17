@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.layout.windowInsetsTopHeight
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Build
 import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.Icon
@@ -63,6 +64,11 @@ fun MainTabBar(
                 title = stringResource(R.string.tab2_name),
                 onClick = { onTabSelected(TabPage.Spec) }
             )
+            MainTab(
+                icon = Icons.Default.Build,
+                title = stringResource(R.string.tab3_name),
+                onClick = { onTabSelected(TabPage.ETC) }
+            )
         }
     }
 }
@@ -111,6 +117,11 @@ private fun MainTabPreview() {
         MainTab(
             icon = Icons.Default.Face,
             title = stringResource(R.string.tab2_name),
+            onClick = { }
+        )
+        MainTab(
+            icon = Icons.Default.Build,
+            title = stringResource(R.string.tab3_name),
             onClick = { }
         )
     }

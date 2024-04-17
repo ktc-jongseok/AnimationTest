@@ -19,6 +19,11 @@ import com.bae.animationtest.ui.theme.animation.RotationAnimation
 import com.bae.animationtest.ui.theme.animation.ScaleAnimation
 import com.bae.animationtest.ui.theme.animation.TranslationAnimation
 import com.bae.animationtest.ui.theme.component.MainTabBar
+import com.bae.animationtest.ui.theme.etc.AnimateContentSizeAnimation
+import com.bae.animationtest.ui.theme.etc.AnimateFloatAsStateAnimation
+import com.bae.animationtest.ui.theme.etc.AnimatedVisibilityAnimation
+import com.bae.animationtest.ui.theme.etc.LottieAnimationSample
+import com.bae.animationtest.ui.theme.etc.RememberInfiniteAnimation
 import com.bae.animationtest.ui.theme.spec.KeyFramesAnimation
 import com.bae.animationtest.ui.theme.spec.RepeatableAnimation
 import com.bae.animationtest.ui.theme.spec.SnapAnimation
@@ -42,15 +47,26 @@ fun MainScreen() {
     ) { padding ->
         AppNavHost(navController = navController, contentPadding = padding)
 
-        if (tabPage == TabPage.Animation) {
-            navController.navigate("animation") {
-                popUpTo(navController.graph.startDestinationId)
-                launchSingleTop = true
+        when (tabPage) {
+            TabPage.Animation -> {
+                navController.navigate("animation") {
+                    popUpTo(navController.graph.startDestinationId)
+                    launchSingleTop = true
+                }
             }
-        } else {
-            navController.navigate("spec") {
-                popUpTo(navController.graph.startDestinationId)
-                launchSingleTop = true
+
+            TabPage.Spec -> {
+                navController.navigate("spec") {
+                    popUpTo(navController.graph.startDestinationId)
+                    launchSingleTop = true
+                }
+            }
+
+            else -> {
+                navController.navigate("etc") {
+                    popUpTo(navController.graph.startDestinationId)
+                    launchSingleTop = true
+                }
             }
         }
     }
@@ -72,9 +88,16 @@ fun AppNavHost(navController: NavHostController, contentPadding: PaddingValues) 
         composable("snap") { SnapAnimation() }
         composable("keyframes") { KeyFramesAnimation() }
         composable("repeatable") { RepeatableAnimation() }
+
+        composable("etc") { EtcSamples(navController, contentPadding) }
+        composable("animatedVisibility") { AnimatedVisibilityAnimation() }
+        composable("animateContentSize") { AnimateContentSizeAnimation() }
+        composable("infinite") { RememberInfiniteAnimation() }
+        composable("progress") { AnimateFloatAsStateAnimation() }
+        composable("lottie") { LottieAnimationSample() }
     }
 }
 
 enum class TabPage {
-    Animation, Spec
+    Animation, Spec, ETC
 }

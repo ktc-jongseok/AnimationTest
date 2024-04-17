@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">AnimationTest</string>
-    <string name="tab1_name">Animation</string>
+    <string name="tab1_name">Anim</string>
     <string name="tab2_name">Spec</string>
+    <string name="tab3_name">ETC</string>
 </resources>

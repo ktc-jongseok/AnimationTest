@@ -15,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.bae.animationtest.ui.theme.LightGreen
+import com.bae.animationtest.ui.theme.Orange
 import com.bae.animationtest.ui.theme.SkyBlue
 import com.bae.animationtest.ui.theme.screen.TabPage
 
@@ -25,7 +26,11 @@ fun MainTabIndicator(
 ) {
     val indicatorLeft = tabPositions[tabPage.ordinal].left
     val indicatorRight = tabPositions[tabPage.ordinal].right
-    val color = if (tabPage == TabPage.Animation) SkyBlue else LightGreen
+    val color = when (tabPage) {
+        TabPage.Animation -> SkyBlue
+        TabPage.Spec -> Orange
+        else -> LightGreen
+    }
     Box(
         Modifier
             .fillMaxSize()
