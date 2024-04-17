@@ -7,8 +7,10 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
@@ -29,36 +31,63 @@ fun AnimateContentSizeAnimation() {
     var expanded by remember {
         mutableStateOf(false)
     }
+    var expandedAnim by remember {
+        mutableStateOf(false)
+    }
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(
-                    color = GreenLight,
-                    shape = RoundedCornerShape(15.dp)
-                )
-                .padding(horizontal = 16.dp, vertical = 8.dp)
-        ) {
-            Text(
-                text = "Android Compose streamlines the integration of animations into your UI, enhancing user interactions with smooth and visually appealing transitions. Utilizing its powerful animation framework, Compose allows developers to easily implement complex animations with minimal code. This is facilitated by the framework's ability to synchronize animations seamlessly with app state changes, thanks to its declarative nature. Compose's built-in transition effects enable fluid, responsive designs that feel intuitive to users. Moreover, the animateContentSize modifier automatically animates changes in UI components' sizes, simplifying the creation of dynamic interfaces. For developers seeking finer control, Compose offers detailed options for timing, easing, and sequencing animations, ensuring a polished final product.",
+        Column {
+            Column(
                 modifier = Modifier
-                    // Use Animation
-//                    .animateContentSize(
-//                        animationSpec = spring(
-//                            dampingRatio = Spring.DampingRatioLowBouncy,
-//                            stiffness = Spring.StiffnessLow
-//                        )
-//                    )
-                    .clickable {
-                        expanded = !expanded
-                    },
-                maxLines = if (!expanded) 2 else 20
-            )
+                    .fillMaxWidth()
+                    .background(
+                        color = GreenLight,
+                        shape = RoundedCornerShape(15.dp)
+                    )
+                    .padding(horizontal = 16.dp, vertical = 8.dp)
+            ) {
+                Text(
+                    text = "Android Compose streamlines the integration of animations into your UI, enhancing user interactions with smooth and visually appealing transitions. Utilizing its powerful animation framework, Compose allows developers to easily implement complex animations with minimal code. This is facilitated by the framework's ability to synchronize animations seamlessly with app state changes, thanks to its declarative nature. Compose's built-in transition effects enable fluid, responsive designs that feel intuitive to users. Moreover, the animateContentSize modifier automatically animates changes in UI components' sizes, simplifying the creation of dynamic interfaces. For developers seeking finer control, Compose offers detailed options for timing, easing, and sequencing animations, ensuring a polished final product.",
+                    modifier = Modifier
+                        .clickable {
+                            expanded = !expanded
+                        },
+                    maxLines = if (!expanded) 2 else 20
+                )
+            }
 
+            Spacer(modifier = Modifier.height(60.dp))
+
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(
+                        color = GreenLight,
+                        shape = RoundedCornerShape(15.dp)
+                    )
+                    .padding(horizontal = 16.dp, vertical = 8.dp)
+            ) {
+                Text(
+                    text = "Android Compose streamlines the integration of animations into your UI, enhancing user interactions with smooth and visually appealing transitions. Utilizing its powerful animation framework, Compose allows developers to easily implement complex animations with minimal code. This is facilitated by the framework's ability to synchronize animations seamlessly with app state changes, thanks to its declarative nature. Compose's built-in transition effects enable fluid, responsive designs that feel intuitive to users. Moreover, the animateContentSize modifier automatically animates changes in UI components' sizes, simplifying the creation of dynamic interfaces. For developers seeking finer control, Compose offers detailed options for timing, easing, and sequencing animations, ensuring a polished final product.",
+                    modifier = Modifier
+                        // Use Animation
+                        .animateContentSize(
+                            animationSpec = spring(
+                                dampingRatio = Spring.DampingRatioLowBouncy,
+                                stiffness = Spring.StiffnessLow
+                            )
+                        )
+                        .clickable {
+                            expandedAnim = !expandedAnim
+                        },
+                    maxLines = if (!expandedAnim) 2 else 20
+                )
+
+            }
         }
+
     }
 }
 

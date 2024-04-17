@@ -7,7 +7,10 @@ import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -41,20 +44,37 @@ fun RememberInfiniteAnimation() {
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
-        Image(
-            modifier = Modifier
-                .drawBehind {
-                    // Use Animation
-//                    rotate(rotationAnimation.value) {
+        Column {
+            Image(
+                modifier = Modifier
+                    .drawBehind {
                         drawCircle(Brush.horizontalGradient(listColors), style = Stroke(20f))
-//                    }
-                }
-                .padding(10.dp)
-                .size(200.dp)
-                .clip(CircleShape),
-            painter = painterResource(id = R.drawable.mario),
-            contentDescription = "mario",
-        )
+                    }
+                    .padding(10.dp)
+                    .size(200.dp)
+                    .clip(CircleShape),
+                painter = painterResource(id = R.drawable.mario),
+                contentDescription = "mario",
+            )
+
+            Spacer(modifier = Modifier.height(60.dp))
+
+            Image(
+                modifier = Modifier
+                    .drawBehind {
+                        // Use Animation
+                        rotate(rotationAnimation.value) {
+                            drawCircle(Brush.horizontalGradient(listColors), style = Stroke(20f))
+                        }
+                    }
+                    .padding(10.dp)
+                    .size(200.dp)
+                    .clip(CircleShape),
+                painter = painterResource(id = R.drawable.mario),
+                contentDescription = "mario",
+            )
+        }
+
     }
 }
 
