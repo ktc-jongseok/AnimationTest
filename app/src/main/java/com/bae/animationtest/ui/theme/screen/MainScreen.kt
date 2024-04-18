@@ -1,5 +1,7 @@
 package com.bae.animationtest.ui.theme.screen
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -22,6 +24,7 @@ import com.bae.animationtest.ui.theme.component.MainTabBar
 import com.bae.animationtest.ui.theme.etc.AnimateContentSizeAnimation
 import com.bae.animationtest.ui.theme.etc.AnimateFloatAsStateAnimation
 import com.bae.animationtest.ui.theme.etc.AnimatedVisibilityAnimation
+import com.bae.animationtest.ui.theme.etc.ComplexAnimation
 import com.bae.animationtest.ui.theme.etc.LottieAnimationSample
 import com.bae.animationtest.ui.theme.etc.RememberInfiniteAnimation
 import com.bae.animationtest.ui.theme.spec.KeyFramesAnimation
@@ -72,6 +75,7 @@ fun MainScreen() {
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
 @Composable
 fun AppNavHost(navController: NavHostController, contentPadding: PaddingValues) {
     NavHost(navController = navController, startDestination = "animation") {
@@ -94,6 +98,7 @@ fun AppNavHost(navController: NavHostController, contentPadding: PaddingValues) 
         composable("animateContentSize") { AnimateContentSizeAnimation() }
         composable("infinite") { RememberInfiniteAnimation() }
         composable("progress") { AnimateFloatAsStateAnimation() }
+        composable("complex") { ComplexAnimation() }
         composable("lottie") { LottieAnimationSample() }
     }
 }

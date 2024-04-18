@@ -60,6 +60,14 @@ fun EtcSamples(navController: NavHostController, contentPadding: PaddingValues) 
         Spacer(modifier = Modifier.height(20.dp))
 
         Button(
+            colors = ButtonDefaults.buttonColors(containerColor = Color.Blue),
+            onClick = { navController.navigate("complex") }
+        ) {
+            Text("Complex Animation")
+        }
+        Spacer(modifier = Modifier.height(20.dp))
+
+        Button(
             colors = ButtonDefaults.buttonColors(containerColor = Color.Red),
             onClick = { navController.navigate("lottie") }
         ) {
